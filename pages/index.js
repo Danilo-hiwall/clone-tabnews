@@ -15,6 +15,7 @@ export default function Home() {
         <h2 className="text-xl font-semibold text-red-500 mt-6">
           Te amo muito! Você é o amor da minha vida. ❤️
         </h2>
+        <h1>Danilo e Mayara Forever</h1>
       </div>
     </main>
   );
