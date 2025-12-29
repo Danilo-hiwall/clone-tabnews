@@ -17,6 +17,12 @@ async function status(request, response) {
 
   const databaseOpenedConnectionsValue = databaseOpenedConnectionsResult.rows[0].count;
 
+  const databaseUptimeResult = await database.query("SELECT extract(epoch FROM now() - pg_postmaster_start_time())::int AS uptime_seconds;");
+
+  const databaseUptimeSeconds = databaseUptimeResult.rows[0].uptime_seconds;
+
+
+
 
   response.status(200).json({
     updated_at: updatedAt,
@@ -25,6 +31,7 @@ async function status(request, response) {
         version: databaseVesionValue,
         max_connections: parseInt(databaseMaxConnectionsValue),
         opened_connections: databaseOpenedConnectionsValue,
+        data_base_time: databaseUptimeSeconds
 
       }
     }
